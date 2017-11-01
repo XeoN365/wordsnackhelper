@@ -11,7 +11,7 @@ const bot = new BootBot({
 
 bot.on('message', (payload, chat) => {
   const text = payload.message.text;
-  var string;
+  var txt;
   var response;
   console.log(text);
   if(text.length <= 9)
@@ -26,11 +26,13 @@ bot.on('message', (payload, chat) => {
        
         // The whole response has been received. Print out the result.
         resp.on('end', () => {
-          string = JSON.parse(data);
-          console.log(string);
-          console.log(string.all);
-          for(var i = 0; i<string.all.length ; i++) {
-            response += "\n"+string.all[i];
+          txt = JSON.parse(data);
+          console.log(txt);
+          console.log(txt.all);
+          for(var i = 0; i<txt.all.length ; i++) {
+            response += "\n"+txt.all[i];
+            console.log(txt.all[i]);
+            console.log("Current: "+response);
            }
         
         });
