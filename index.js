@@ -1,5 +1,7 @@
 'use strict';
 const BootBot = require('bootbot');
+const https = require('https');
+
 
 const bot = new BootBot({
   accessToken: 'EAAaTzJFfr8QBAKCxGe7GOxHUbcERn3OcGZCDeEN2HoofyDJgRLtcCVZAz37pgNyASGYrOr33bKoeCncYkBtWLaQ8ZASeMD2l4ZCBPKZApIDqeaI6V5SL3fZBbU0tv0T0cTdMdU5lnkBMyFSQWNZAAC8jOZBxo9o7B7ElS3AsxexXZAQZDZD',
@@ -9,7 +11,25 @@ const bot = new BootBot({
 
 bot.on('message', (payload, chat) => {
   const text = payload.message.text;
-  chat.say(`Echo: ${text}`);
+  var string;
+  if(text.length <= 9)
+  {
+    https.get('www.anagramica.com/all/:'+text,(resp) => {
+        let data = '';
+       
+        // A chunk of data has been recieved.
+        resp.on('data', (chunk) => {
+          data += chunk;
+        });
+       
+        // The whole response has been received. Print out the result.
+        resp.on('end', () => {
+          string = (JSON.parse(data).explanation);
+        });
+       
+      })
+    chat.say(`Echo: ${string}`);
+  }
 });
 
 bot.start();
