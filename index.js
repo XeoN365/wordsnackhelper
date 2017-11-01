@@ -30,8 +30,11 @@ bot.on('message', (payload, chat) => {
           txt = JSON.parse(data);
 
           for(var i = 0; i<txt.all.length ; i++) {
-            chat.say(`Word: ${txt.all[i]}`);
-            console.log("Word sent: "+txt.all[i]);
+              if(txt.all[i] >2)
+              {
+                chat.say(`Word: ${txt.all[i]}`);
+                console.log("Word sent: "+txt.all[i]);
+              }
            }
         
         });
