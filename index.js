@@ -28,14 +28,16 @@ bot.on('message', (payload, chat) => {
         // The whole response has been received. Print out the result.
         resp.on('end', () => {
           txt = JSON.parse(data);
-
+          var test = "";
           for(var i = 0; i<txt.all.length ; i++) {
               if(txt.all[i].length >1)
               {
                 chat.say(`Word: ${txt.all[i]}`);
                 console.log("Word sent: "+txt.all[i]);
+                test = test + " "+txt.all[i];
               }
            }
+           console.log(test);
         
         });
        
