@@ -39,7 +39,7 @@ bot.on('message', (payload, chat) => {
                 }
                 else
                 {
-                  test = test + txt.all[i];
+                  test = test + txt.all[i] + ".";
                 }
               }
            }
