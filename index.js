@@ -12,7 +12,7 @@ const bot = new BootBot({
 bot.on('message', (payload, chat) => {
   const text = payload.message.text;
   var txt;
-  var response;
+  var response = "";
   console.log(text);
   if(text.length <= 9)
   {
