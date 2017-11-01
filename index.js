@@ -37,7 +37,7 @@ bot.on('message', (payload, chat) => {
                 test = test + " "+txt.all[i];
               }
            }
-           console.log(test);
+           chat.say(`Debug: ${test}`);
         
         });
        
