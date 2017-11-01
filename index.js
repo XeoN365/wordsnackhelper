@@ -30,7 +30,7 @@ bot.on('message', (payload, chat) => {
           console.log(txt);
           console.log(txt.all);
           for(var i = 0; i<txt.all.length ; i++) {
-            chat.say(`Word: ${txt.all[i]}`);
+            setTimeout(function() {chat.say(`Word: ${txt.all[i]}`)}, 30);
            }
         
         });
