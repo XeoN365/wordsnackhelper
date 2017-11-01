@@ -12,6 +12,7 @@ const bot = new BootBot({
 bot.on('message', (payload, chat) => {
   const text = payload.message.text;
   var string;
+  console.log(text);
   if(text.length <= 9)
   {
     https.get('http://www.anagramica.com/all/:'+text,(resp) => {
@@ -24,7 +25,8 @@ bot.on('message', (payload, chat) => {
        
         // The whole response has been received. Print out the result.
         resp.on('end', () => {
-          string = (JSON.parse(data).explanation);
+          string = (JSON.parse(data).all);
+          console.log(data);
         });
        
       })
