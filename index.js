@@ -1,6 +1,6 @@
 'use strict';
 const BootBot = require('bootbot');
-const https = require('https');
+const https = require('http');
 
 
 const bot = new BootBot({
@@ -14,7 +14,7 @@ bot.on('message', (payload, chat) => {
   var string;
   if(text.length <= 9)
   {
-    https.get('www.anagramica.com/all/:'+text,(resp) => {
+    https.get('http://www.anagramica.com/all/:'+text,(resp) => {
         let data = '';
        
         // A chunk of data has been recieved.
