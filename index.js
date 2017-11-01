@@ -33,7 +33,7 @@ bot.on('message', (payload, chat) => {
       })
     string.forEach(function(element) {
         response += "\n"+ element;
-    }, this);
+    });
     chat.say(`Echo: ${response}`);
   }
 });
