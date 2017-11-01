@@ -13,7 +13,6 @@ bot.on('message', (payload, chat) => {
   const text = payload.message.text;
   var txt;
   var response = "";
-  console.log(text);
   if(text.length <= 9)
   {
     https.get('http://www.anagramica.com/all/:'+text,(resp) => {
@@ -27,10 +26,9 @@ bot.on('message', (payload, chat) => {
         // The whole response has been received. Print out the result.
         resp.on('end', () => {
           txt = JSON.parse(data);
-          console.log(txt);
-          console.log(txt.all);
           for(var i = 0; i<txt.all.length ; i++) {
-            setTimeout(function() {chat.say(`Word: ${txt.all[i]}`)}, 30);
+            setTimeout(function() {chat.say(txt.all[i])}, 30);
+            console.log("Word sent: " +txt.all[i]);
            }
         
         });
