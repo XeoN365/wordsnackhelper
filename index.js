@@ -11,6 +11,7 @@ const bot = new BootBot({
 
 bot.on('message', (payload, chat) => {
   const text = payload.message.text;
+  console.log(payload.sender.id);
   var txt;
   var response = "";
   if(text.length <= 9)
