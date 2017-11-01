@@ -28,7 +28,7 @@ bot.on('message', (payload, chat) => {
         resp.on('end', () => {
           string = JSON.parse(data);
           console.log(string);
-          console.log(stirng.all);
+          console.log(string.all);
         
         });
        
