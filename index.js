@@ -35,11 +35,13 @@ bot.on('message', (payload, chat) => {
                 console.log("Word sent: "+txt.all[i]);
                 if(i < txt.all.length-2)
                 {
+                  console.log("index: "+i+" length: "+txt.all.length-2);
                   test = test + txt.all[i] + ", ";
                 }
                 else
                 {
                   test = test + txt.all[i] + ".";
+                  console.log("index: "+i+" length: "+txt.all.length-2);
                 }
               }
            }
