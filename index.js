@@ -27,7 +27,7 @@ bot.on('message', (payload, chat) => {
         resp.on('end', () => {
           txt = JSON.parse(data);
           for(var i = 0; i<txt.all.length ; i++) {
-            setTimeout(function() {chat.say(txt.all[i])}, 30);
+            setTimeout(function() {chat.say(''+txt.all[i])}, 30);
             console.log("Word sent: " +txt.all[i]);
            }
         
