@@ -33,7 +33,7 @@ bot.on('message', (payload, chat) => {
               if(txt.all[i].length >1)
               {
                 console.log("Word sent: "+txt.all[i]);
-                if(i != txt.all.length-1)
+                if(i < txt.all.length-1)
                 {
                   test = test + txt.all[i] + ", ";
                 }
