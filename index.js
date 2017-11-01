@@ -38,6 +38,9 @@ bot.on('message', (payload, chat) => {
       })
     
     
+  }else
+  {
+    chat.say(`Too many letters! Max 9 letters!`);
   }
 });
 
