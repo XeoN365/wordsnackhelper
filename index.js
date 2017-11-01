@@ -30,16 +30,14 @@ bot.on('message', (payload, chat) => {
           console.log(txt);
           console.log(txt.all);
           for(var i = 0; i<txt.all.length ; i++) {
-            response.concat(" ".concat(txt.all[i]));
-            console.log(txt.all[i]);
-            console.log("Current: "+response);
+            chat.say(`Word: ${txt.all[i]}`);
            }
         
         });
        
       })
     
-    chat.say(`Echo: ${response}`);
+    
   }
 });
 
