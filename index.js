@@ -29,9 +29,9 @@ bot.on('message', (payload, chat) => {
           string = JSON.parse(data);
           console.log(string);
           console.log(string.all);
-        string.all.foreach(function(element) {
-            response += "\n"+element;
-        });
+          for(var i = 0; i<string.all.length ; i++) {
+            response += "\n"+string.all[i];
+           }
         
         });
        
