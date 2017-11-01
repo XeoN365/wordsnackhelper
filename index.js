@@ -37,7 +37,7 @@ bot.on('message', (payload, chat) => {
                 {
                   test = test + txt.all[i] + ", ";
                 }
-                else if (i == txt.all.length)
+                else
                 {
                   test = test + txt.all[i];
                 }
