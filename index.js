@@ -41,7 +41,7 @@ bot.on('message', (payload, chat) => {
                 else
                 {
                   test = test + txt.all[i] + ".";
-                  console.log("index: "+i+" length: "+txt.all.length-2);
+                  console.log("index: "+i+" length: "+(txt.all.length-2));
                 }
               }
            }
