@@ -2,18 +2,19 @@
 const BootBot = require('bootbot');
 const https = require('http');
 
-
+// Creating a bot instance
 const bot = new BootBot({
   accessToken: 'EAAaTzJFfr8QBAKCxGe7GOxHUbcERn3OcGZCDeEN2HoofyDJgRLtcCVZAz37pgNyASGYrOr33bKoeCncYkBtWLaQ8ZASeMD2l4ZCBPKZApIDqeaI6V5SL3fZBbU0tv0T0cTdMdU5lnkBMyFSQWNZAAC8jOZBxo9o7B7ElS3AsxexXZAQZDZD',
-  verifyToken: process.env.VERIFICATION_TOKEN,
+  verifyToken: process.env.VERIFICATION_TOKEN, //process.env.VERIFICATION_TOKEN is the same as access token but this is used as a variable on heroku
   appSecret: 'b4429f036f24817598d0cf688b244095'
 });
 
+//looking for received messages
 bot.on('message', (payload, chat) => {
   const text = payload.message.text;
-  console.log(payload.sender.id);
   var txt;
   var response = "";
+  //Check if user have put more than 9 letters (API is not accepting more than 9 letters)
   if(text.length <= 9)
   {
       console.log("Word Received: "+text);
@@ -28,31 +29,36 @@ bot.on('message', (payload, chat) => {
         // The whole response has been received. Print out the result.
         resp.on('end', () => {
           txt = JSON.parse(data);
-          var test = "";
+          var response = "";
           var _txt = [];
           var _txt_temp = [];
           for(var i = 0; i<txt.all.length ; i++) {
-            // SPRAWDZ LITERY KTORE SIE POKAZA A NIE WSZYSTKIE!!!!
+            //Checking if word has more than one letter
               if(txt.all[i].length >1)
               {
+                //Adding this word into temporary aray
                 _txt_temp.push(txt.all[i]);
                 
               }
            }
+           //Assigning data from temporary array into array that is going to be used
            _txt = _txt_temp;
            for(var i =0; i < _txt.length; i++)
            {
+              //Checking if loop index is less than not last word to add comma
               if(i < _txt.length-1)
               {
-                test = test + _txt[i]+ ", ";
+                response = response + _txt[i]+ ", ";
               }
+              // if loop index is last word add fullstop instead
               else
               {
-                test = test + _txt[i] + ".";
+                response = response + _txt[i] + ".";
               }
            }
-           console.log("Words sent: "+test);
-           chat.say(`Words: ${test}`);
+           console.log("Words sent: "+response);
+           //Send the words to the user
+           chat.say(`Words: ${response}`);
         
         });
        
@@ -61,8 +67,10 @@ bot.on('message', (payload, chat) => {
     
   }else
   {
+    //Sending user message to put less than 9 letters
     chat.say(`Too many letters! Max 9 letters!`);
   }
 });
 
+//Start this bot
 bot.start();
