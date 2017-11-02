@@ -42,20 +42,16 @@ bot.on('message', (payload, chat) => {
            _txt = _txt_temp;
            for(var i =0; i < _txt.length; i++)
            {
-              console.log("Word sent: "+_txt[i]);
               if(i < _txt.length-1)
               {
-                console.log("index: "+i);
-                console.log("length: "+(_txt.length-2));
                 test = test + _txt[i]+ ", ";
               }
               else
               {
                 test = test + _txt[i] + ".";
-                console.log("index: "+i);
-                console.log("length: "+(_txt.length-2));
               }
            }
+           console.log("Words sent: "+test);
            chat.say(`Words: ${test}`);
         
         });
