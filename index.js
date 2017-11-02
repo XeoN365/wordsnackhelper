@@ -58,7 +58,14 @@ bot.on('message', (payload, chat) => {
            }
            console.log("Words sent: "+response);
            //Send the words to the user
-           chat.say(`Words: ${response}`);
+           if(response != "")
+           {
+            chat.say(`Words: ${response}`);
+           }
+           else
+           {
+             chat.say(`No words could be made out of "${text}"`);
+           }
         
         });
        
