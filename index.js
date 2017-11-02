@@ -17,7 +17,7 @@ bot.on('message', (payload, chat) => {
   //Check if user have put more than 9 letters (API is not accepting more than 9 letters)
   if(text.length <= 9)
   {
-        console.log(/^[a-zA-Z]+$/.test(str));
+        console.log(/^[a-zA-Z]+$/.test(text));
         console.log("Word Received: "+text);
         https.get('http://www.anagramica.com/all/:'+text,(resp) => {
         let data = '';
