@@ -29,22 +29,31 @@ bot.on('message', (payload, chat) => {
         resp.on('end', () => {
           txt = JSON.parse(data);
           var test = "";
+          var _txt = [];
+          var _txt_temp = [];
           for(var i = 0; i<txt.all.length ; i++) {
+            // SPRAWDZ LITERY KTORE SIE POKAZA A NIE WSZYSTKIE!!!!
               if(txt.all[i].length >1)
               {
-                console.log("Word sent: "+txt.all[i]);
-                if(i < txt.all.length-2)
-                {
-                  console.log("index: "+i);
-                  console.log("length: "+(txt.all.length-2));
-                  test = test + txt.all[i] + ", ";
-                }
-                else
-                {
-                  test = test + txt.all[i] + ".";
-                  console.log("index: "+i);
-                  console.log("length: "+(txt.all.length-2));
-                }
+                _txt_temp.push(txt.all[i]);
+                
+              }
+           }
+           _txt = _txt_temp;
+           for(var i =0; i < _txt.length; i++)
+           {
+              console.log("Word sent: "+_txt[i]);
+              if(i < _txt.length-1)
+              {
+                console.log("index: "+i);
+                console.log("length: "+(_txt.length-2));
+                test = test + _txt[i]+ ", ";
+              }
+              else
+              {
+                test = test + _txt[i] + ".";
+                console.log("index: "+i);
+                console.log("length: "+(_txt.length-2));
               }
            }
            chat.say(`Words: ${test}`);
