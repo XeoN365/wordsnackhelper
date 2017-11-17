@@ -4,9 +4,9 @@ const https = require('http');
 
 // Creating a bot instance
 const bot = new BootBot({
-  accessToken: 'EAAaTzJFfr8QBAKCxGe7GOxHUbcERn3OcGZCDeEN2HoofyDJgRLtcCVZAz37pgNyASGYrOr33bKoeCncYkBtWLaQ8ZASeMD2l4ZCBPKZApIDqeaI6V5SL3fZBbU0tv0T0cTdMdU5lnkBMyFSQWNZAAC8jOZBxo9o7B7ElS3AsxexXZAQZDZD',
+  accessToken: process.env.ACCESS_TOKEN,
   verifyToken: process.env.VERIFICATION_TOKEN, //process.env.VERIFICATION_TOKEN is the same as access token but this is used as a variable on heroku
-  appSecret: 'b4429f036f24817598d0cf688b244095'
+  appSecret: process.env.APP_SECRET
 });
 
 //looking for received messages
@@ -31,18 +31,15 @@ bot.on('message', (payload, chat) => {
           txt = JSON.parse(data);
           var response = "";
           var _txt = [];
-          var _txt_temp = [];
           for(var i = 0; i<txt.all.length ; i++) {
             //Checking if word has more than one letter
               if(txt.all[i].length >1)
               {
                 //Adding this word into temporary aray
-                _txt_temp.push(txt.all[i]);
+                _txt.push(txt.all[i]);
                 
               }
            }
-           //Assigning data from temporary array into array that is going to be used
-           _txt = _txt_temp;
            for(var i =0; i < _txt.length; i++)
            {
               //Checking if loop index is less than not last word to add comma
